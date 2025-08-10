@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>㊗️うも お誕生日おめでとう㊗️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  body {
+    font-family: "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff8f0;
+    color: #333;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  #loginArea, #contentArea {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  #loginArea {
+    margin-top: 100px;
+  }
+  input[type="password"] {
+    font-size: 1.2em;
+    padding: 10px;
+    width: 70%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
+  button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff6f61;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #e85c50;
+  }
+  #errorMessage {
+    color: red;
+    margin-top: 15px;
+    height: 1.2em;
+  }
+  #passwordHint {
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: #666;
+    user-select: none;
+  }
+  #message {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+    opacity: 0;
+    transition: opacity 1s ease;
+    user-select: none;
+  }
+  #message.visible {
+    opacity: 1;
+  }
+  #presentButton {
+    display: none;
+    margin-top: 25px;
+    font-size: 1.2em;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  #presentButton:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div id="loginArea">
+  <h2>パスワードを入力してください</h2>
+  <input type="password" id="passwordInput" placeholder="パスワード" />
+  <button id="loginButton">Enter</button>
+  <div id="errorMessage"></div>
+  <div id="passwordHint">ヒント:うもの誕生日4ケタ！</div>
+</div>
+
+<div id="contentArea" style="display:none;">
+  <button id="playButton">▶︎</button>
+  <button id="pauseButton" style="display:none;">BGM一時停止</button>
+
+  <audio id="birthdaySong" loop preload="auto">
+    <source src="https://drive.google.com/file/d/1nM0IXS4WKxIWMlFidq3NeMfWg9C1KCDV/view?usp=drivesdk.mp3" type="audio/mpeg" />
+    お使いのブラウザはaudioタグに対応していません。
+  </audio>
+
+  <div id="message">
+    うもへ<br>
+    お誕生日おめでとう！<br><br>
+    これまでたくさん頑張ってきたうもも。<br>
+    うもは最高のお母さんです。<br>
+    これからは、もっと自由に、もっと楽しく。<br>
+    笑顔いっぱいで過ごせますように！
+    <br>
+    <a id="presentButton" href="https://pay.paypay.ne.jp/DgniRS8pJDDmqBwE" target="_blank" rel="noopener noreferrer">🎁 プレゼント</a>
+    <div id="confirmationCode" style="margin-top:12px; font-size:1em; color:#777; user-select:none;">
+    確認コード：ゆいかの誕生日♪
+    </div>
+  </div>
+</div>
+
+<script>
+  const correctPassword = "your-password";  // ここにパスワードを入れてください
+
+  const loginArea = document.getElementById('loginArea');
+  const contentArea = document.getElementById('contentArea');
+  const passwordInput = document.getElementById('0804');
+  const loginButton = document.getElementById('loginButton');
+  const errorMessage = document.getElementById('errorMessage');
+
+  const playButton = document.getElementById('playButton');
+  const pauseButton = document.getElementById('pauseButton');
+  const audio = document.getElementById('birthdaySong');
+  const message = document.getElementById('message');
+  const presentButton = document.getElementById('presentButton');
+
+  loginButton.addEventListener('click', () => {
+    if (passwordInput.value === correctPassword) {
+      loginArea.style.display = 'none';
+      contentArea.style.display = 'block';
+      errorMessage.textContent = '';
+    } else {
+      errorMessage.textContent = 'パスワードが違うみたい…もう一度入力してね！';
+    }
+  });
+
+  playButton.addEventListener('click', () => {
+    audio.play();
+    message.classList.add('visible');
+    presentButton.style.display = 'inline-block';
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'inline-block';
+  });
+
+  pauseButton.addEventListener('click', () => {
+    audio.pause();
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'inline-block';
+  });
+</script>
+
+</body>
+</html>
