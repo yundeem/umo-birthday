@@ -80,6 +80,12 @@
   #presentButton:hover {
     background-color: #45a049;
   }
+  /* ここで音楽メッセージは初めから表示 */
+  #musicMessage {
+    color: #4caf50;
+    margin-top: 8px;
+    font-size: 1em;
+  }
 </style>
 </head>
 <body>
@@ -94,9 +100,7 @@
 
 <div id="contentArea" style="display:none;">
   <button id="playButton">▶︎</button>
-  <div id="musicMessage" style="color:#4caf50; margin-top:8px; font-size:1em; display:none;">
-  音楽が流れるよ！
-  </div>
+  <div id="musicMessage">音楽が流れるよ！</div>
   <button id="pauseButton" style="display:none;">⏸️</button>
 
   <audio id="birthdaySong" loop preload="auto">
